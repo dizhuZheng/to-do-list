@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="To-do List"/>
   </div>
 </template>
 
@@ -13,6 +12,7 @@ export default {
   components: {
     HelloWorld
   }
+
 }
 </script>
 
@@ -21,8 +21,44 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+body{
+  background-color: lightskyblue;
+}
+
+.list{
+  background-color: white;
+  font-size: 15px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  list-style-type: circle;
+  margin: 0 10px;
+}
+
+.bt {
+  background-color: rgb(29, 27, 189); /* Green */
+  border:none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  margin-left: 50px;
+  display: inline-block;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+div{
+  background-color: white;
+  margin-left: 0px;
+  padding:60px;
 }
 </style>
