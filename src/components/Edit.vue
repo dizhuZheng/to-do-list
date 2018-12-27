@@ -1,17 +1,15 @@
 <template>
   <div id="edit">
     <div class="border">
-      <div class="doneImg"></div>
-      <div class="closeImg"></div>
-      <br><br>
+      <div class="doneImg" @click= "addToList"></div>
+      <div @click = "closeDialog" class="closeImg"></div>
       <form style="text-align:left">
         <label>Discription:</label>
-        <input type="text"> &nbsp;
+        <textarea style="float:left;resize:none;" rows="5" cols="20"></textarea>
         <label>Date:</label>
-        <input type="text">
       </form>
       <p style="text-align:left">Notes:</p>
-      <textarea style="float:left;resize:none;" rows="15" cols="20"></textarea>
+      <textarea style="float:left;resize:none;" rows="2" cols="10"></textarea>
     </div>
   </div>
 </template>
@@ -23,12 +21,21 @@ export default {
     return {
     }
   },
-  // methods:{
-  //   closeDialog(){
-  //     this.$emit('guan',false)
-  //   }
-  // }
 
+  methods:{
+    openDialog(){
+      this.$emit('open',false)
+    },
+
+    closeDialog(){
+      this.$emit('guan',false)
+    },
+
+    addToList(){
+      this.$emit('guan',false)
+    },
+
+  }
 }
 </script>
 
@@ -46,8 +53,8 @@ export default {
 }
 
 .closeImg{
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   float: right;
   margin-right: 5px;
   margin-top: 5px;
@@ -60,22 +67,10 @@ export default {
 .border{
   background-color: rgb(201, 95, 95);
   border-radius: 20px;
-  /* width: 80%;
-  height: 90%; */
-  /* position: absolute; */
   position: fixed;
-  bottom: 0vh;
-  left: 0vh;
-  /* left: 50%;
-  top: 50%; */
+  bottom: 15vh;
+  left: 10vh;
+  right: 25vh;
 }
 
-/* .container{
-  border: 2px solid black;
-  margin-left: 0;
-  width: 50%;
-  height: 50%;
-  text-align: left;
-  overflow: scroll;
-} */
 </style>

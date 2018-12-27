@@ -30,7 +30,6 @@ body{
 }
 
 div{
-  background-color: white;
   margin-left: 0px;
   padding:10px;
 }

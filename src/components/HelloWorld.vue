@@ -1,9 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <ul>
-      <button style= "font-size:20px; cursor: pointer;" @click = "showDialog=true">Click Here !</button>
-    </ul>
+    <button style= "font-size:20px; cursor: pointer;" @click = "showDialog=true">Click Here !</button>
      <stick-note
       @closeDialog="close"
       v-if= "showDialog">
@@ -22,7 +20,7 @@ export default {
 
   data(){
     return {
-        showDialog: false
+      showDialog: false
     }
   },
   methods: {
@@ -42,5 +40,4 @@ h1{
   left:0px;
   top:0px;
 }
-
 </style>

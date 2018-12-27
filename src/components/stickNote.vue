@@ -1,28 +1,45 @@
 <template>
   <div id="stick-note">
     <div class="border">
-      <div class="addImg"></div>
-      <div @click="closeDialog" class="closeImg"></div>
-      <edit>djksfeg</edit>
+      <div class="addImg" style= "font-size:20px; cursor: pointer;" @click = "showEdit=true"></div>
+      <div @click="closeDialog" class="closeImg" ></div>
+      <edit
+       @open="o"
+       v-if= "showEdit">
+      </edit>
+
+      <edit
+       @guan="c"
+       v-if= "showEdit">
+     </edit>
     </div>
   </div>
 </template>
 
 <script>
 import Edit from './Edit.vue'
+var arr= [];
 
 export default {
   name: 'StickNote',
 
   data(){
     return {
-      show: true
+      showEdit: false,
     }
   },
 
   methods:{
     closeDialog(){
       this.$emit('closeDialog',false)
+    },
+
+    o(){
+      this.showEdit = true;
+    },
+
+    c(){
+      this.showEdit = false;
     }
   },
 
@@ -40,14 +57,14 @@ export default {
   margin-left: 5px;
   margin-top: 5px;
   cursor: pointer;
-  background-image: url(../assets/plus.png);
+  background-image: url(../assets/add.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .closeImg{
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height:30px;
   float: right;
   margin-right: 5px;
   margin-top: 5px;
@@ -61,8 +78,8 @@ export default {
   text-align: center;
   background-color: rgb(148, 101, 194);
   border-radius: 20px;
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: 60%;
   position: absolute;
   left: 50%;
   top: 50%;
