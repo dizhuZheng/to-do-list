@@ -29,8 +29,9 @@ body{
   background-color: lightskyblue;
 }
 
-div{
+ div{
   margin-left: 0px;
   padding:10px;
 }
+
 </style>

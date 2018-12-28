@@ -1,24 +1,26 @@
 <template>
   <div id="stick-note">
     <div class="border">
-      <div class="addImg" style= "font-size:20px; cursor: pointer;" @click = "showEdit=true"></div>
-      <div @click="closeDialog" class="closeImg" ></div>
+      <img src="../assets/add.png" style="width:50px;
+  height:50px;cursor:pointer; position:fixed; right: 0px; bottom:0px" @click="showEdit=true">
       <edit
        @open="o"
-       v-if= "showEdit">
-      </edit>
-
-      <edit
        @guan="c"
-       v-if= "showEdit">
-     </edit>
+       @childFn="parentFn"
+       v-if="showEdit">
+       </edit>
+       <div>
+       <li style= "font-size: 25px;" v-for="msg in messages" :key="msg">&nbsp; {{ msg }}
+       <img src="../assets/edit.png" style="width:25px;
+  height:25px;">&nbsp;<img src="../assets/delete.png" style="width:23px;
+  height:23px;"></li>
+       </div>
     </div>
   </div>
 </template>
 
 <script>
 import Edit from './Edit.vue'
-var arr= [];
 
 export default {
   name: 'StickNote',
@@ -26,20 +28,21 @@ export default {
   data(){
     return {
       showEdit: false,
+      messages: []
     }
   },
 
   methods:{
-    closeDialog(){
-      this.$emit('closeDialog',false)
-    },
-
     o(){
       this.showEdit = true;
     },
 
     c(){
       this.showEdit = false;
+    },
+
+    parentFn(payload){
+      this.messages.push(payload);
     }
   },
 
@@ -50,40 +53,19 @@ export default {
 </script>
 
 <style scoped>
-.addImg{
-  width: 20px;
-  height: 20px;
-  float: left;
-  margin-left: 5px;
-  margin-top: 5px;
-  cursor: pointer;
-  background-image: url(../assets/add.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.closeImg{
-  width: 30px;
-  height:30px;
-  float: right;
-  margin-right: 5px;
-  margin-top: 5px;
-  cursor: pointer;
-  background-image: url(../assets/close.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 
 .border{
-  text-align: center;
-  background-color: rgb(148, 101, 194);
+  text-align: left;
+  border-style: dashed;
+  background-color:lemonchiffon;
   border-radius: 20px;
-  width: 60%;
-  height: 60%;
+  width: 50%;
+  height: 65%;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
+  overflow:auto;
 }
 
 </style>

@@ -1,11 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <button style= "font-size:20px; cursor: pointer;" @click = "showDialog=true">Click Here !</button>
-     <stick-note
-      @closeDialog="close"
-      v-if= "showDialog">
-     </stick-note>
+    <stick-note>
+    </stick-note>
   </div>
 </template>
 
@@ -20,13 +17,9 @@ export default {
 
   data(){
     return {
-      showDialog: false
     }
   },
   methods: {
-    close(){
-      this.showDialog = false;
-    }
   },
    components: {
     stickNote
@@ -36,8 +29,8 @@ export default {
 
 <style scoped>
 h1{
-  position: absolute;
-  left:0px;
+  position: relative;
+  float:left;
   top:0px;
 }
 </style>
