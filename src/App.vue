@@ -34,4 +34,9 @@ body{
   padding:10px;
 }
 
+img{
+  width: 25px;
+  height: 25px;
+}
+
 </style>

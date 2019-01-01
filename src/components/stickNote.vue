@@ -8,18 +8,18 @@
       <img src="../assets/add.png" style="width:50px;
       height:50px;cursor:pointer; position:fixed; right: 0px; bottom:0px" @click="showEdit=true">
       <edit
-        @open="o"
-        @guan="c"
-        @childFn="parentFn"
+        @open="open"
+        @close="close"
+        @addToList="addToList"
         v-if="showEdit">
        </edit>
-       <li style="font-size:25px" v-for="(msg,index) in messages" :key="msg">
-         {{msg.description}}
-          <div class="operate">
-            <img src="../assets/done.png" style="width:25px; height:25px;">&nbsp;
-            <img src="../assets/edit.png" style="width:25px; height:25px;">&nbsp;
-            <img src="../assets/delete.png" style="width:23px; height:23px;" @click="del(index)">
-          </div>
+       <li :class="'todo-finished-' + msg.finished" v-for="(msg,index) in messages" :key="msg.messageID">
+          {{msg.description}}
+          <span class="note_buttons">
+            <img src="../assets/done.png" @click="todoDone(index)">
+            <img src="../assets/edit.png">
+            <img src="../assets/delete.png" @click="deleteMessage(index)">
+          </span>
        </li>
     </div>
   </div>
@@ -34,26 +34,37 @@ export default {
   data(){
     return {
       showEdit: false,
-      messages:[]
+      messages:[],
+      messageID: 0,
     }
-  },
+},
 
   methods:{
-    o(){
+    open(){
       this.showEdit = true;
     },
 
-    c(){
+    close(){
       this.showEdit = false;
     },
 
-    parentFn(payload){
-
-      this.messages.push(payload);
+    addToList(payload){
+      const listItem = {
+        messageID: this.messageID,
+        finished: false,
+        description: payload.description
+      }
+      this.messageID = this.messageID + 1
+      this.messages.push(listItem);
     },
 
-    del(index){
+    deleteMessage(index){
       this.messages.splice(index,1)
+    },
+
+    todoDone(index){
+      console.log(index + 'is done!')
+      this.messages[index].finished = true;
     }
   },
 
@@ -80,17 +91,25 @@ export default {
 }
 
 .active{
-
   text-decoration: line-through;
-
 }
 .action{
   margin-top: 6%;
   margin-left: -20px;
 }
 
-.operate{
-  padding:5px;
-  float:right;
+.note_buttons img{
+  float: right;
+  margin: 6px;
+}
+
+.todo-finished-true {
+  font-size:25px;
+  text-decoration: line-through;
+}
+
+.todo-finished-false {
+  font-size:25px;
+  text-decoration: none;
 }
 </style>
