@@ -13,9 +13,10 @@
         @childFn="parentFn"
         v-if="showEdit">
        </edit>
-       <li style= "font-size: 25px;" v-for="(msg,index) in messages" :key="msg">{{msg}}
+       <li style="font-size:25px" v-for="(msg,index) in messages" :key="msg">
+         {{msg.description}}
           <div class="operate">
-            <img src="../assets/done.png" style="width:25px; height:25px;" @click="save">&nbsp;
+            <img src="../assets/done.png" style="width:25px; height:25px;">&nbsp;
             <img src="../assets/edit.png" style="width:25px; height:25px;">&nbsp;
             <img src="../assets/delete.png" style="width:23px; height:23px;" @click="del(index)">
           </div>
@@ -33,8 +34,7 @@ export default {
   data(){
     return {
       showEdit: false,
-      messages: [],
-      finished:[]
+      messages:[]
     }
   },
 
@@ -48,15 +48,12 @@ export default {
     },
 
     parentFn(payload){
+
       this.messages.push(payload);
     },
 
     del(index){
       this.messages.splice(index,1)
-    },
-
-    save(p){
-      this.finished.push(p);
     }
   },
 
@@ -82,6 +79,11 @@ export default {
   overflow:auto;
 }
 
+.active{
+
+  text-decoration: line-through;
+
+}
 .action{
   margin-top: 6%;
   margin-left: -20px;
