@@ -9,19 +9,19 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/HelloWorld',
       name: 'HelloWorld',
       component: HelloWorld
-    },
-    {
-      path: '/edit',
-      name: 'Edit',
-      component: Edit
     },
     {
       path: '/stick-note',
       name: 'stickNote',
       component: stickNote
+    },
+    {
+      path: '/edit',
+      name: 'Edit',
+      component: Edit
     }
   ]
 })

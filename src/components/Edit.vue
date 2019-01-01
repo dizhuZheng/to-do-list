@@ -1,28 +1,35 @@
 <template>
   <div id="edit">
     <div class="border">
-      <div class="doneImg" @click="addToList"></div>
-      <div @click="closeDialog" class="closeImg"></div>
-      <form style="text-align:left">
-        <label>Description:</label>
-        <textarea v-model="description" style="float:left;resize:none;" rows="5" cols="20"></textarea>
-        <label>Date:</label>
-        <button>skip</button>
-        <p style="text-align:left">Notes:</p>
-        <textarea v-model="notes" style="float:left;resize:none;" rows="5" cols="10"></textarea>
-      </form>
+    <img src="../assets/done.png" style="width:30px;
+    height:30px;cursor:pointer; position:relative; float:left; top:0px" @click="addToList">
+    <img src="../assets/close.png" style="width:50px;
+    height:50px;cursor:pointer; position:relative; float:right; top:-5px" @click="closeDialog">
+    <label>Description:</label>
+    <textarea v-model="description" style="resize:none;" rows="5" cols="20"></textarea>
+    <p style="text-align:left">Notes:</p>
+    <textarea v-model="notes" style="resize:none;" rows="5" cols="25"></textarea>
+    <label>Date:</label>
+    <!-- <date-pick
+        v-model="date"
+        :hasInputElement="false"
+    ></date-pick> -->
+
     </div>
   </div>
 </template>
 
 <script>
+// import DatePick from 'vue-date-pick';
+
 export default {
   name: 'Edit',
 
   data(){
     return {
       description: null,
-      notes:null
+      notes:null,
+      date: '2019-01-03'
     }
   },
 
@@ -41,7 +48,8 @@ export default {
       this.$emit('guan',false)
     },
 
-    addToList(){
+    addToList()
+    {
       if(!this.$options.methods.isBlank(this.description))
         {
         this.$emit('childFn', this.description);
@@ -51,42 +59,20 @@ export default {
         alert("Input can't be null !")
       }
     }
-  }
+  },
+  // components:
+  // {
+  //   DatePick
+  // }
 }
 </script>
 
 <style scoped>
-.doneImg{
-  width: 10px;
-  height: 10px;
-  float: left;
-  margin-left: 5px;
-  margin-top: 5px;
-  cursor: pointer;
-  background-image: url(../assets/done.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.closeImg{
-  width: 20px;
-  height: 20px;
-  float: right;
-  margin-right: 5px;
-  margin-top: 5px;
-  cursor: pointer;
-  background-image: url(../assets/close.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .border{
-  background-color: rgb(201, 95, 95);
+  background-color: rgb(219, 107, 107);
   border-radius: 20px;
-  position: fixed;
-  bottom: 25vh;
-  left: 20vh;
-  right: 25vh;
+  padding: 30px;
+  float:right;
 }
 
 </style>

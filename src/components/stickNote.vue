@@ -1,20 +1,25 @@
 <template>
   <div id="stick-note">
+    <div class="action">
+      <button type="button">Unfinished Tasks</button>
+      <button type="button">Finished Tasks</button>
+    </div>
     <div class="border">
       <img src="../assets/add.png" style="width:50px;
-  height:50px;cursor:pointer; position:fixed; right: 0px; bottom:0px" @click="showEdit=true">
+      height:50px;cursor:pointer; position:fixed; right: 0px; bottom:0px" @click="showEdit=true">
       <edit
-       @open="o"
-       @guan="c"
-       @childFn="parentFn"
-       v-if="showEdit">
+        @open="o"
+        @guan="c"
+        @childFn="parentFn"
+        v-if="showEdit">
        </edit>
-       <div>
-       <li style= "font-size: 25px;" v-for="msg in messages" :key="msg">&nbsp; {{ msg }}
-       <img src="../assets/edit.png" style="width:25px;
-  height:25px;">&nbsp;<img src="../assets/delete.png" style="width:23px;
-  height:23px;"></li>
-       </div>
+       <li style= "font-size: 25px;" v-for="(msg,index) in messages" :key="msg">{{msg}}
+          <div class="operate">
+            <img src="../assets/done.png" style="width:25px; height:25px;" @click="save">&nbsp;
+            <img src="../assets/edit.png" style="width:25px; height:25px;">&nbsp;
+            <img src="../assets/delete.png" style="width:23px; height:23px;" @click="del(index)">
+          </div>
+       </li>
     </div>
   </div>
 </template>
@@ -28,7 +33,8 @@ export default {
   data(){
     return {
       showEdit: false,
-      messages: []
+      messages: [],
+      finished:[]
     }
   },
 
@@ -43,6 +49,14 @@ export default {
 
     parentFn(payload){
       this.messages.push(payload);
+    },
+
+    del(index){
+      this.messages.splice(index,1)
+    },
+
+    save(p){
+      this.finished.push(p);
     }
   },
 
@@ -68,4 +82,13 @@ export default {
   overflow:auto;
 }
 
+.action{
+  margin-top: 6%;
+  margin-left: -20px;
+}
+
+.operate{
+  padding:5px;
+  float:right;
+}
 </style>

@@ -19,8 +19,7 @@ export default {
     return {
     }
   },
-  methods: {
-  },
+
    components: {
     stickNote
   }
@@ -33,4 +32,5 @@ h1{
   float:left;
   top:0px;
 }
+
 </style>
