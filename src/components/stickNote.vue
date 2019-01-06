@@ -8,19 +8,19 @@
       <img src="../assets/add.png" style="width:50px;
       height:50px;cursor:pointer; position:fixed; right: 0px; bottom:0px" @click="showEdit=true">
       <edit
-        @open="open"
         @close="close"
         @addToList="addToList"
-        v-if="showEdit">
-       </edit>
-       <li :class="'todo-finished-' + msg.finished" v-for="(msg,index) in messages" :key="msg.messageID">
-          {{msg.description}}
-          <span class="note_buttons">
-            <img src="../assets/done.png" @click="todoDone(index)">
-            <img src="../assets/edit.png">
-            <img src="../assets/delete.png" @click="deleteMessage(index)">
-          </span>
-       </li>
+        v-if="showEdit"
+        :editMessage="editMessage"
+      ></edit>
+      <li :class="'todo-finished-' + msg.finished" v-for="(msg,index) in messages" :key="msg.messageID">
+        {{msg.description}}
+        <span class="note_buttons">
+          <img src="../assets/done.png" @click="todoDone(index)">
+          <img src="../assets/edit.png" @click="todoEdit(index)">
+          <img src="../assets/delete.png" @click="deleteMessage(index)">
+        </span>
+      </li>
     </div>
   </div>
 </template>
@@ -34,17 +34,15 @@ export default {
   data(){
     return {
       showEdit: false,
+      editMessage: null,
       messages:[],
       messageID: 0,
     }
-},
+  },
 
   methods:{
-    open(){
-      this.showEdit = true;
-    },
-
     close(){
+      this.editMessage=null
       this.showEdit = false;
     },
 
@@ -63,8 +61,12 @@ export default {
     },
 
     todoDone(index){
-      console.log(index + 'is done!')
       this.messages[index].finished = true;
+    },
+
+    todoEdit(index){
+      this.editMessage=this.messages[index]
+      this.showEdit=true;
     }
   },
 

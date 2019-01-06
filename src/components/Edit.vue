@@ -1,16 +1,21 @@
 <template>
   <div id="edit">
     <div class="border">
-      <img src="../assets/done.png"
-           style="width:30px; height:30px;cursor:pointer; position:relative; float:left; top:0px"
-           @click="addToList">
-      <img src="../assets/close.png"
-           style="width:50px; height:50px;cursor:pointer; position:relative; float:right; top:-5px"
-           @click="closeDialog">
+      <img
+        src="../assets/done.png"
+        style="width:30px; height:30px;cursor:pointer; position:relative; float:left; top:0px"
+        @click="addToList"
+      >
+      <img
+        src="../assets/close.png"
+        style="width:50px; height:50px;cursor:pointer; position:relative; float:right; top:-5px"
+        @click="closeDialog"
+      >
       <label>Description:</label>
-      <textarea id="d" value="description" v-model="description" style="resize:none;" rows="5" cols="20"></textarea>
+      <textarea v-model="description" style="resize:none;" rows="5" cols="10"></textarea>
+
       <p style="text-align:left">Notes:</p>
-      <textarea id="n" value="notes" v-model="notes" style="resize:none;" rows="5" cols="25"></textarea>
+      <textarea v-model="notes" style="resize:none;" rows="5" cols="25"></textarea>
       <label>Date:</label>
     </div>
   </div>
@@ -19,6 +24,12 @@
 <script>
 export default {
   name: 'Edit',
+  props: {
+    msg: {
+      type: Object,
+      required: false
+    }
+  },
 
   data(){
     return {
@@ -63,11 +74,10 @@ export default {
 </script>
 
 <style scoped>
-.border{
+.border {
   background-color: rgb(219, 107, 107);
   border-radius: 20px;
   padding: 30px;
-  float:right;
+  float: right;
 }
-
 </style>
