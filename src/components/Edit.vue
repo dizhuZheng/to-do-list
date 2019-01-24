@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div id="edit">
     <div class="border">
@@ -28,6 +29,9 @@ export default {
     msg: {
       type: Object,
       required: false
+    },
+    notes: {
+      type: String
     }
   },
 
@@ -35,7 +39,8 @@ export default {
     return {
       description: null,
       notes: null,
-      date: '2019-01-03'
+      date: '2019-01-03',
+      value: 'cdjsbcdi'
     }
   },
 
@@ -75,9 +80,11 @@ export default {
 
 <style scoped>
 .border {
-  background-color: rgb(219, 107, 107);
+  background-color: rgb(150, 184, 58);
   border-radius: 20px;
   padding: 30px;
   float: right;
 }
 </style>
+
+/* eslint-disable */

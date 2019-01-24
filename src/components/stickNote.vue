@@ -1,9 +1,5 @@
 <template>
   <div id="stick-note">
-    <div class="action">
-      <button type="button">Unfinished Tasks</button>
-      <button type="button">Finished Tasks</button>
-    </div>
     <div class="border">
       <img src="../assets/add.png" style="width:50px;
       height:50px;cursor:pointer; position:fixed; right: 0px; bottom:0px" @click="showEdit=true">
@@ -40,10 +36,14 @@ export default {
     }
   },
 
+components: {
+  'edit': Edit,
+},
+
   methods:{
     close(){
       this.editMessage=null
-      this.showEdit = false;
+      this.showEdit = false
     },
 
     addToList(payload){
@@ -53,25 +53,20 @@ export default {
         description: payload.description
       }
       this.messageID = this.messageID + 1
-      this.messages.push(listItem);
+      this.messages.push(listItem)
     },
-
     deleteMessage(index){
       this.messages.splice(index,1)
     },
 
     todoDone(index){
-      this.messages[index].finished = true;
+      this.messages[index].finished = true
     },
 
     todoEdit(index){
       this.editMessage=this.messages[index]
-      this.showEdit=true;
+      this.showEdit=true
     }
-  },
-
-  components:{
-    Edit
   }
 }
 </script>
@@ -94,10 +89,6 @@ export default {
 
 .active{
   text-decoration: line-through;
-}
-.action{
-  margin-top: 6%;
-  margin-left: -20px;
 }
 
 .note_buttons img{
