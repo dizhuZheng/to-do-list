@@ -1,10 +1,12 @@
 <template>
   <div class="border">
     <h3 style="position: relative; margin-left: 10px;">{{msg}}</h3>
+    <p v-for="value in values" :key="value.messageID">{{ value.description }}</p>
   </div>
 </template>
 
 <script>
+
 export default {
   props: {
     msg: {
@@ -14,22 +16,17 @@ export default {
   },
   data() {
     return {
-      infos:[]
+      values: this.$store.state.todos.filter(todo => todo.finished)
     }
-  },
-  methods: {
-    click: function() {
-      this.$emit("click");
-    }
-  },
+  }
 }
 </script>
 
-<style>
+<style scoped>
 .border {
   text-align: center;
   border-style: solid;
-  background-color: whitesmoke;
+  background-color: plum;
   border-radius: 20px;
   width: 30%;
   height: 55%;

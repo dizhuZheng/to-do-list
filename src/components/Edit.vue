@@ -29,9 +29,6 @@ export default {
     msg: {
       type: Object,
       required: false
-    },
-    notes: {
-      type: String
     }
   },
 

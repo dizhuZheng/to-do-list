@@ -22,15 +22,16 @@
       </span>
     </div>
     <stickNote v-if="flag"></stickNote>
-    <list v-if="value1" :msg="msg2"></list>
-    <list v-if="value2" :msg="msg3"></list>
+    <finished_list v-if="value1" :msg="msg2"></finished_list>
+    <unfinished_list v-if="value2" :msg="msg3"></unfinished_list>
   </div>
 </template>
 
 <script>
 import quiButton from '../components/quiButton.vue'
 import stickNote from '../components/stickNote.vue'
-import list from '../components/list.vue'
+import finished_list from '../components/finished_list.vue'
+import unfinished_list from '../components/unfinished_list.vue'
 
 export default {
   name: 'HelloWorld',
@@ -50,10 +51,11 @@ export default {
     }
   },
   components: {
-      'dizhu-btn': quiButton,
-      'stickNote': stickNote,
-      'list': list,
-    }
+    'dizhu-btn': quiButton,
+    'stickNote': stickNote,
+    'finished_list': finished_list,
+    'unfinished_list': unfinished_list
+  }
 }
 </script>
 

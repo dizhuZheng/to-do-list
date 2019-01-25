@@ -1,18 +1,21 @@
 <template>
-    <button @click="setValue">setValue</button>
+  <div>
+    <p v-for="value in values" :key="value">{{ value.text }}</p>
+  </div>
 </template>
 
 <script>
+
 export default {
-  data(){
-      return {
-          value: [1,2,3,4,5]
-      }
-  },
-  methods: {
-      setValue: function(){
-          this.$emit('getData', this.value)
-      }
+    data() {
+        return {
+            values: this.$store.state.todos.filter(todo => todo.done)
+        }
+    },
+  computed: {
+    doneTodosCount() {
+      return this.$store.state.todos.filter(todo => todo.done)
+    }
   }
 }
 </script>

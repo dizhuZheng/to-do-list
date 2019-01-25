@@ -4,7 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import Edit from '@/components/Edit'
 import stickNote from '@/components/stickNote'
 import quiButton from '@/components/quiButton'
-import list from '@/components/list'
+import finished_list from '@/components/finished_list'
+import unfinished_list from '@/components/unfinished_list'
 import test from '@/components/test'
 
 Vue.use(Router)
@@ -33,9 +34,15 @@ export default new Router({
     },
 
     {
-      path: '/list',
-      name: 'list',
-      component: list
+      path: '/finished_list',
+      name: 'finished_list',
+      component: finished_list
+    },
+
+    {
+      path: '/unfinished_list',
+      name: 'unfinished_list',
+      component: unfinished_list
     },
 
     {

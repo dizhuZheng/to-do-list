@@ -23,30 +23,28 @@
 
 <script>
 import Edit from './Edit.vue'
-
 export default {
   name: 'StickNote',
 
-  data(){
+  data() {
     return {
       showEdit: false,
       editMessage: null,
-      messages:[],
+      messages: [],
       messageID: 0,
     }
   },
 
-components: {
-  'edit': Edit,
-},
-
-  methods:{
-    close(){
-      this.editMessage=null
+  components: {
+    'edit': Edit,
+  },
+  methods: {
+    close() {
+      this.editMessage = null
       this.showEdit = false
     },
 
-    addToList(payload){
+    addToList(payload) {
       const listItem = {
         messageID: this.messageID,
         finished: false,
@@ -54,18 +52,18 @@ components: {
       }
       this.messageID = this.messageID + 1
       this.messages.push(listItem)
-    },
-    deleteMessage(index){
-      this.messages.splice(index,1)
+      this.$store.commit('add', listItem)
     },
 
-    todoDone(index){
+    deleteMessage(index) {
+      this.messages.splice(index, 1)
+    },
+    todoDone(index) {
       this.messages[index].finished = true
     },
-
-    todoEdit(index){
-      this.editMessage=this.messages[index]
-      this.showEdit=true
+    todoEdit(index) {
+      this.editMessage = this.messages[index]
+      this.showEdit = true
     }
   }
 }
