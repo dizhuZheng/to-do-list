@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p v-for="value in values" :key="value">{{ value.text }}</p>
+    <textarea v-model="values"></textarea>
   </div>
 </template>
 
@@ -9,13 +9,8 @@
 export default {
     data() {
         return {
-            values: this.$store.state.todos.filter(todo => todo.done)
+            values: this.$store.state.todos[0].description
         }
-    },
-  computed: {
-    doneTodosCount() {
-      return this.$store.state.todos.filter(todo => todo.done)
     }
-  }
 }
 </script>

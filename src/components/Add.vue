@@ -12,10 +12,9 @@
         style="width:50px; height:50px;cursor:pointer; position:relative; float:right; top:-5px"
         @click="closeDialog"
       >
-
       <div>
           <label>Description:</label>
-          <textarea v-model="this.$store.state.todos[index-1].description" class="textarea"></textarea>
+          <textarea v-model="description" class="textarea"></textarea>
       </div>
 
       <div>
@@ -30,22 +29,12 @@
 <script>
 export default {
   name: 'Edit',
-  props: {
-    index: {
-      type:Number,
-      required: true
-    }
-  },
 
   data(){
-    // Created: set description, notes, date from the store.
-    // Start: v-model description, notes, date LOCALLY
-    // You do not change anything in the store yet.
-    // If the user clicks "save" then change the item in the store.
     return {
       description: null,
       notes: null,
-      date: '2019-01-03', // default: today's date,
+      date: '2019-01-03' // default: today's date
     }
   },
 

@@ -1,7 +1,7 @@
 <template>
   <div class="border">
     <h3 style="position: relative; margin-left: 10px;">{{msg}}</h3>
-    <p v-for="value in values" :key="value">{{ value.description }}</p>
+    <p v-for="(value,index) in values" :key="value.messageID">{{index}}.&nbsp;&nbsp;&nbsp;{{ value.description }}</p>
   </div>
 </template>
 
@@ -35,5 +35,10 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
   overflow: auto;
+}
+p{
+  position: relative;
+  margin-top: 5px;
+  margin-left: -250px;
 }
 </style>

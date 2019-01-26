@@ -7,6 +7,7 @@ import quiButton from '@/components/quiButton'
 import finished_list from '@/components/finished_list'
 import unfinished_list from '@/components/unfinished_list'
 import test from '@/components/test'
+import add from '@/components/Add'
 
 Vue.use(Router)
 
@@ -49,6 +50,12 @@ export default new Router({
       path: '/test',
       name: 'test',
       component: test
+    },
+
+    {
+      path: '/Add',
+      name: 'add',
+      component: add
     }
   ]
 })
